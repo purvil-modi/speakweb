@@ -1,8 +1,10 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "/",
-  headers: { "Content-Type": "application/json" },
+  baseURL: import.meta.env.VITE_API_BASE_URL,
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
 
 export async function crawlWebsite(url) {
@@ -10,3 +12,9 @@ export async function crawlWebsite(url) {
   return data;
 }
 
+export async function askQuestion(question) {
+  const { data } = await api.post("/chat", { question });
+  return data;
+}
+
+export default api;

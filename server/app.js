@@ -5,7 +5,11 @@ import chatRoutes from "./routes/chatRoutes.js";
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: "*", // Allow requests from any origin
+  methods: ["GET", "POST"], // Allow only GET and POST methods
+  allowedHeaders: ["Content-Type"], // Allow only specific headers
+}));
 app.use(express.json());
 
 app.use("/crawl", crawlRoutes);

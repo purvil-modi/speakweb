@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Send, LoaderCircle, CheckCircle, Search, FileText, Sparkles, Bot } from "lucide-react";
 import ChatMessage from "./ChatMessage.jsx";
 
+const API_URL = import.meta.env.VITE_API_BASE_URL;
+
 // Animated progress stages shown while waiting for a response
 function ChatProgressIndicator({ phase }) {
   const steps = [
@@ -74,7 +76,7 @@ export default function ChatBox({ crawledUrl }) {
     setLoadingPhase("retrieving");
 
     try {
-      const response = await fetch("/chat", {
+      const response = await fetch(`${API_URL}/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question }),
