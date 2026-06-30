@@ -1,0 +1,24 @@
+# dependencies
+node_modules/
+
+# build
+dist/
+build/
+
+# environment
+.env
+.env.local
+.env.production
+
+# logs
+logs
+*.log
+
+# vscode
+.vscode/
+
+# mac
+.DS_Store
+
+# windows
+Thumbs.db
